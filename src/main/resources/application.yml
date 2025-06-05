@@ -1,22 +1,18 @@
-## Configuracion de Instancia
-server:
-  port: 8082
-  error:
-    include-stacktrace: on_param
-
-## Configuracion del cliente de Eureka
+## Configuration for Eureka
 eureka:
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     service-url:
       defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
   instance:
-    preferIpAddress: true
-    hostname: ms-inventory-orders
+    preferIpAddress: true # For local development. Set to false if you want to use the hostname in a DNS-enabled environment
+    hostname: ${HOSTNAME:msbookspayments}
 
-## Configuracion de Spring
+## Configuration for App name and Spring Data
 spring:
   application:
-    name: ms-inventory-orders
+    name: ${APP_NAME:msbookspayments}
   datasource:
     url: jdbc:h2:mem:testdb
   jpa:
@@ -28,6 +24,10 @@ spring:
       settings:
         web-allow-others: true
 
+## Instance port
+server:
+  port: ${PORT:8080}
+
 ## Configuracion secundaria (custom)
 getProduct:
-  url: http://ms-inventory-products/products/%s
+  url: http://ms-books-catalogue/books/%s
