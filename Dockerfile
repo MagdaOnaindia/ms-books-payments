@@ -1,20 +1,20 @@
 #
-# Build del proyecto (Multi-Stage)
+# Project build (Multi-Stage)
 # --------------------------------
 #
-# Usamos una imagen de Maven para hacer build de proyecto con Java
-# Llamaremos a este sub-entorno "build"
-# Copiamos todo el contenido del repositorio
-# Ejecutamos el comando mvn clean package (Generara un archivo JAR para el despliegue)
+# We use a Maven image to build the project with Java
+# We will call this sub-environment "build"
+# Copy all the contents of the repository
+# Run the mvn clean package command (It will generate a JAR file for deployment)
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 COPY . .
 RUN mvn clean package
 
-# Usamos una imagen de Openjdk
-# Exponemos el puerto que nuestro componente va a usar para escuchar peticiones
-# Copiamos desde "build" el JAR generado (la ruta de generacion es la misma que veriamos en local) y lo movemos y renombramos en destino como 
-# Marcamos el punto de arranque de la imagen con el comando "java -jar app.jar" que ejecutará nuestro componente.
+# We use an Openjdk image
+# We expose the port that our component will use to listen to requests
+# We copy from "build" the generated JAR (the generation path is the same as we would see locally) and we move and rename it in destination as app.jar
+# We mark the starting point of the image with the command "java -jar app.jar" that will execute our component.
 FROM openjdk:21
-EXPOSE 8082
-COPY --from=build /target/inventory-orders-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+COPY --from=build /target/microservice-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
