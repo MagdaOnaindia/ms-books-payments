@@ -1,4 +1,4 @@
-package com.unir.orders.data.model;
+package com.msbookspayments.microservice.data.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,6 +20,6 @@ public class Order {
     private Long id;
 
     @ElementCollection
-    @Column(name = "products")
-    private List<Long> products;
+    @Column(name = "books")
+    private List<Long> books;
 }
