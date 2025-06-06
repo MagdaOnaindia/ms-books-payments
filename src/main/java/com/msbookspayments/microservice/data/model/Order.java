@@ -20,6 +20,5 @@ public class Order {
     private Long id;
 
     @ElementCollection
-    @Column(name = "books")
     private List<Long> books;
 }
