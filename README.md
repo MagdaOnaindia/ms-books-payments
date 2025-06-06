@@ -1,5 +1,5 @@
 # back-end-spring-microservice-archetype
-msbookspayments Microservice on port 8080
+ms-books-payments Microservice on port 8080
 
 You can deploy the project on Railway using the following button:
 
