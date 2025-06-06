@@ -15,15 +15,15 @@ import lombok.ToString;
 @ToString
 public class Book {
 	private Long id;
-	private String título;
+	private String titulo;
 	private String autor;
-	private String fecha_de_publicación;
+	private String fecha_de_publicacion;
 	private String editorial;
-	private String categoría;
+	private String categoria;
 	private String ISBN;
 	private String portada;
 	private String sinopsis;
-	private String valoración;
+	private String valoracion;
 	private Boolean visible;
 	private Boolean stock;
 	private Double precio;
