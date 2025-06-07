@@ -16,16 +16,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class BooksFacade {
 	
 	
-	 @Value("${getProduct.url}")
-	  private String getProductUrl;
+	 @Value("${getBook.url}")
+	  private String getBookUrl;
 
 	  private final WebClient.Builder webClient;
 
-	  public Book getProduct(String id) {
+	  public Book getBook(String id) {
 
 	    try {
-	      String url = String.format(getProductUrl, id);
-	      log.info("Getting product with ID {}. Request to {}", id, url);
+	      String url = String.format(getBookUrl, id);
+	      log.info("Getting book with ID {}. Request to {}", id, url);
 	      return webClient.build()
 	              .get()
 	              .uri(url)
@@ -33,13 +33,13 @@ public class BooksFacade {
 	              .bodyToMono(Book.class)
 	              .block();
 	    } catch (HttpClientErrorException e) {
-	      log.error("Client Error: {}, Product with ID {}", e.getStatusCode(), id);
+	      log.error("Client Error: {}, Book with ID {}", e.getStatusCode(), id);
 	      return null;
 	    } catch (HttpServerErrorException e) {
-	      log.error("Server Error: {}, Product with ID {}", e.getStatusCode(), id);
+	      log.error("Server Error: {}, Book with ID {}", e.getStatusCode(), id);
 	      return null;
 	    } catch (Exception e) {
-	      log.error("Error: {}, Product with ID {}", e.getMessage(), id);
+	      log.error("Error: {}, Book with ID {}", e.getMessage(), id);
 	      return null;
 	    }
 	  }

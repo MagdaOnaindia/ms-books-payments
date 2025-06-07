@@ -25,7 +25,7 @@ public class OrdersServiceImpl implements OrdersService {
   @Override
   public Order createOrder(OrderRequest request) {
 
-    List<Book> books = request.getBooks().stream().map(booksFacade::getProduct).filter(Objects::nonNull).toList();
+    List<Book> books = request.getBooks().stream().map(booksFacade::getBook).filter(Objects::nonNull).toList();
 
     if(books.size() != request.getBooks().size() || books.stream().anyMatch(book -> !book.getVisible())) {
       return null;
