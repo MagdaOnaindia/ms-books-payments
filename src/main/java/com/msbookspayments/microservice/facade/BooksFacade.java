@@ -21,7 +21,7 @@ public class BooksFacade {
 
 	  private final WebClient.Builder webClient;
 
-	  public Book getBook(Long id) {
+	  public Book getBook(String id) {
 
 	    try {
 	      String url = String.format(getBookUrl, id);
