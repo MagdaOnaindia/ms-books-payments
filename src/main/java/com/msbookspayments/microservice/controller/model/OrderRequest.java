@@ -22,5 +22,5 @@ public class OrderRequest {
 	//Customizacion de validaciones (2): https://medium-parser-seven.vercel.app/?url=https://medium.com/thedevproject/unlock-the-power-of-jakarta-validation-with-spring-boot-boost-your-java-development-skills-c2ea676f1157
 	@NotNull(message = "`books` cannot be null")
 	@NotEmpty(message = "`books` cannot be empty")
-	private List<String> books;
+	private List<Long> books;
 }

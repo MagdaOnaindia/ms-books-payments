@@ -17,13 +17,13 @@ public class Book {
 	private Long id;
 	private String titulo;
 	private String autor;
-	private String fecha_de_publicacion;
+	private String fechaDePublicacion;
 	private String editorial;
 	private String categoria;
-	private String ISBN;
+	private Long isbn;
 	private String portada;
 	private String sinopsis;
-	private String valoracion;
+	private Double valoracion;
 	private Boolean visible;
 	private Boolean stock;
 	private Double precio;

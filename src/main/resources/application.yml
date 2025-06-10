@@ -15,7 +15,7 @@ spring:
     name: ${APP_NAME:ms-books-payments}
   profiles:
     active:
-     DEV
+     PROD
   datasource:
    url: jdbc:h2:mem:testdb;Mode=MySQL
   jpa:
