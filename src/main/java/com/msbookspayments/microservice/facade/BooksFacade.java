@@ -3,6 +3,8 @@ package com.msbookspayments.microservice.facade;
 import com.msbookspayments.microservice.facade.model.Book;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -11,22 +13,27 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class BooksFacade {
-	
-	
-	 @Value("${getBook.url}")
-	  private String getBookUrl;
 
-	  private final WebClient.Builder webClient;
+	private final String getBookUrl;
+	private final WebClient.Builder webClientBuilder;
+
+	@Autowired
+	public BooksFacade(
+			@Qualifier("loadBalancedWebClientBuilder") WebClient.Builder webClientBuilder,
+			@Value("${getBook.url}") String getBookUrl
+	) {
+		this.webClientBuilder = webClientBuilder;
+		this.getBookUrl = getBookUrl;
+	}
 
 	  public Book getBook(String id) {
 
 	    try {
 	      String url = String.format(getBookUrl, id);
 	      log.info("Getting book with ID {}. Request to {}", id, url);
-	      return webClient.build()
+	      return webClientBuilder.build()
 	              .get()
 	              .uri(url)
 	              .retrieve()
