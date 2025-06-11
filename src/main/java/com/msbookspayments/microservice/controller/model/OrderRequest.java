@@ -1,5 +1,6 @@
 package com.msbookspayments.microservice.controller.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,5 +23,6 @@ public class OrderRequest {
 	//Customizacion de validaciones (2): https://medium-parser-seven.vercel.app/?url=https://medium.com/thedevproject/unlock-the-power-of-jakarta-validation-with-spring-boot-boost-your-java-development-skills-c2ea676f1157
 	@NotNull(message = "`books` cannot be null")
 	@NotEmpty(message = "`books` cannot be empty")
-	private List<String> books;
+	@Valid //se validan los OrderItemRequest dentro de la lista
+	private List<OrderItemRequest> items;
 }

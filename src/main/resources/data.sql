@@ -1,9 +1,17 @@
--- Insertar en la tabla orders
-INSERT INTO orders (id) VALUES (1);
-INSERT INTO orders (id) VALUES (2);
-INSERT INTO orders (id) VALUES (3);
+INSERT INTO orders (id, order_date) VALUES (1, '2023-10-26 10:00:00.000');
+INSERT INTO orders (id, order_date) VALUES (2, '2023-10-26 11:30:00.000');
+INSERT INTO orders (id, order_date) VALUES (3, '2023-10-27 09:15:00.000');
 
--- Insertar en la tabla de colección generada automáticamente (order_books)
-INSERT INTO order_books (order_id, books) VALUES (1, 1), (1, 2);
-INSERT INTO order_books (order_id, books) VALUES (2, 4);
-INSERT INTO order_books (order_id, books) VALUES (3, 4), (3, 1), (3, 2);
+
+
+-- Ítems para la Orden con ID 1
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (1, 101, 2);
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (1, 102, 1);
+
+-- Ítems para la Orden con ID 2
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (2, 104, 3);
+
+-- Ítems para la Orden con ID 3
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (3, 104, 1);
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (3, 101, 1);
+INSERT INTO order_items (order_id, book_id, quantity) VALUES (3, 102, 5);
