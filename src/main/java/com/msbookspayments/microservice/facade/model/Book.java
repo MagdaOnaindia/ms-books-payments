@@ -1,5 +1,7 @@
 package com.msbookspayments.microservice.facade.model;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,14 +19,14 @@ public class Book {
 	private Long id;
 	private String titulo;
 	private String autor;
-	private String fecha_de_publicacion;
+	private LocalDate fechaDePublicacion;
 	private String editorial;
 	private String categoria;
-	private String ISBN;
+	private String isbn;
 	private String portada;
 	private String sinopsis;
-	private String valoracion;
+	private Double valoracion;
 	private Boolean visible;
-	private Boolean stock;
+	private Integer stock;
 	private Double precio;
 }

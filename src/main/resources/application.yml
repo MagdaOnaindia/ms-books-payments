@@ -13,6 +13,9 @@ eureka:
 spring:
   application:
     name: ${APP_NAME:ms-books-payments}
+  profiles:
+    active:
+     PROD
   datasource:
    url: jdbc:h2:mem:testdb;Mode=MySQL
   jpa:
@@ -26,6 +29,7 @@ spring:
       path: /h2-console
       settings:
         web-allow-others: true
+
 management:
  endpoints:
   web:
