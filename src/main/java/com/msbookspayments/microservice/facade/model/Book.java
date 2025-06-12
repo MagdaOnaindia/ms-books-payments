@@ -19,7 +19,7 @@ public class Book {
 	private Long id;
 	private String titulo;
 	private String autor;
-	private LocalDate fechaDePublicacion;
+	private LocalDate fecha_de_publicacion;
 	private String editorial;
 	private String categoria;
 	private String isbn;
